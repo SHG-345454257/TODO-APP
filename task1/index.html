@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- Указываем что это HTML5-документ -->
+<html lang="ru" class="scroll-smooth">
+<!-- язык страницы русский + плавная прокрутка -->
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- кодировка -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- адаптивность страницы -->
+    <title>Практика</title>
+    <!-- заголовок  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Подключаем Tailwind -->
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Настраиваем его,ставим основной цвет и темный режим -->
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-10 max-w-4xl">
+
+        <header class="text-center mb-10">
+            <h1 class="text-4x1 font-bold mb-2">Практика HTTP-запросов</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400">
+            Студент: Ридная Мария Александровна
+            </p>
+        </header>
+
+        <div class="flex flex-wrap gap-4 justify-center mb-10">
+            
+            <button onclick="getAllPosts()"
+                class="px-6 py-3 bg-primary text-white font-medium rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition">
+                1. Загрузить 10 постов
+            </button>
+            <!-- Настраиваем внешний вид кнопоки и вызываем функцию для получения всех постов -->
+
+            <button onclick="getPost5()"
+                class="px-6 py-3 bg-gray-600 text-white font-medium rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 transition">
+                2. Получить пост №5
+            </button>
+            <!-- тоже внешний вид кнопоки, тоже вызываем функцию, но уже для получения поста 5 -->
+        </div>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4">Создать новый пост</h2>
+            <div class="space-y-4 max-w-xl mx-auto">
+                <!-- онтейнер для формы с отступами между элементами -->
+                <input id="title" type="text" placeholder="Заголовок поста" 
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary">
+                <textarea id="body" rows="4" placeholder="Текст поста..." 
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary">
+                </textarea>
+                 <!-- ^ поля для ввода заголовка и текста поста + стили оформления -->
+                <button onclick="createPost()"
+                    class="w-full px-6 py-3 bg-green-600 text-white font-medium rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-4 focus: ring-green-300 transition">
+                    Отправить POST-запрос
+                </button>
+                <!-- кнопка с обработчиком события создания пост-запроса -->
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold mb-4">Результат</h2>
+            <div id="result" 
+                class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 min-h-[200px] prose dark:prose-invert max-w-none">
+                Здесь появится ответ от сервера...
+            </div>
+            <!-- блок для отображения результата от сервера + стили для разных тем -->
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+    <!-- ссылаемся на скрипт в другом файле  -->
+</body>
+
+</html>
